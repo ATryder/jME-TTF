@@ -206,11 +206,11 @@ public abstract class TrueTypeBMP<T extends GlyphBMP> extends TrueTypeFont<T, Tr
     
     @Override
     public T[] getGlyphs(StringBuilder text) {
-        T[] glyphs = (T[])new GlyphBMP[sb.length()];
+        T[] glyphs = (T[])new GlyphBMP[text.length()];
         LinkedList<CharToCreate> unCached = new LinkedList<CharToCreate>();
         
-        for (int i = 0; i < sb.length(); i++) {
-            int codePoint = sb.codePointAt(i);
+        for (int i = 0; i < text.length(); i++) {
+            int codePoint = text.codePointAt(i);
             if (!canDisplay(codePoint) || invalidCharacters.contains(codePoint)) {
                 codePoint = defaultCodePoint;
             }
