@@ -1,0 +1,22 @@
+MaterialDef Simple {
+    MaterialParameters {
+        Color Color (Color)
+        Boolean useAA : True
+    }
+    Technique {
+        VertexShader GLSL100: Common/MatDefs/TTF/TTF_Vert.vert
+        FragmentShader GLSL100: Common/MatDefs/TTF/TTF_Frag.frag
+        
+        WorldParameters {
+            WorldViewProjectionMatrix
+        }
+        
+        RenderState {
+            Blend Alpha
+        }
+        
+        Defines {
+            USEAA : useAA
+        }
+    }
+}
