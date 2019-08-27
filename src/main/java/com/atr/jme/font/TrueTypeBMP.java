@@ -67,16 +67,18 @@ public abstract class TrueTypeBMP<T extends GlyphBMP> extends TrueTypeFont<T, Tr
     protected int atlasWidth = 0;
     protected int atlasHeight = 0;
     protected int maxTexRes = 2048;
-    
     protected final List<AtlasListener> onAtlas = new LinkedList<AtlasListener>();
     
+    protected boolean fixedResolution = false;
+
     public TrueTypeBMP(AssetManager assetManager, Style style, int pointSize, int outline, int dpi,
-            int maxAtlasResolution) {
+            int maxAtlasResolution, boolean fixedResolution) {
         super(assetManager, style, pointSize, dpi);
         
         this.outline = outline;
         padding = 10 + (outline * 2);
         maxTexRes = maxAtlasResolution;
+        this.fixedResolution = fixedResolution;
     }
     
     /**
@@ -275,8 +277,13 @@ public abstract class TrueTypeBMP<T extends GlyphBMP> extends TrueTypeFont<T, Tr
      * @see TrueTypeSfntly#createGlyphs(java.util.List)
      */
     protected void resizeAtlas() {
-        atlasWidth += (atlasWidth + resizeWidth > maxTexRes) ? 0 : resizeWidth;
-        atlasHeight += (atlasHeight + charHeight > maxTexRes) ? 0 : charHeight;
+        if (fixedResolution) {
+            atlasWidth = this.maxTexRes;
+            atlasHeight = this.maxTexRes;
+        } else {
+            atlasWidth += (atlasWidth + resizeWidth > maxTexRes) ? 0 : resizeWidth;
+            atlasHeight += (atlasHeight + charHeight > maxTexRes) ? 0 : charHeight;
+        }
         
         int numNewLines = (int)FastMath.floor((float)atlasHeight / charHeight) - atlasLines.size();
         for (int i = 0; i < numNewLines; i++) {

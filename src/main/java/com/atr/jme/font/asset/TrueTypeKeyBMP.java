@@ -30,7 +30,7 @@ import java.io.IOException;
 public class TrueTypeKeyBMP extends TrueTypeKey {
     private int outline;
     private int maxAtlasResolution = 2048;
-    
+    private boolean fixedResolution = false;
     /**
      * Instantiates a new <code>TrueTypeKeyBMP</code> with a default style
      * of Plain, no outline, a default screen density of 72 and default
@@ -194,6 +194,31 @@ public class TrueTypeKeyBMP extends TrueTypeKey {
     }
     
     /**
+     * Instantiates a new <code>TrueTypeKeyBMP</code>.
+     * 
+     * @param name The path to the true type font asset.
+     * @param style The {@link Style} of the font.
+     * @param pointSize The desired point size.
+     * @param outline The size of the font's outline.
+     * @param dpi The density of the screen in dots per inch.
+     * @param useWeakCache Set to true to use weak references in
+     * the cache, this will cause the loaded font to be cleaned up
+     * by the garbage collector if memory becomes scarce, the font
+     * will be re-loaded when needed in this case. Set to false
+     * to use strong references in the cache preventing the
+     * garbage collector from reclaiming this font.
+     * @param preload A set of characters to initialize the font with.
+     * @param maxAtlasResolution The maximum resolution of the texture atlas.
+     */
+    public TrueTypeKeyBMP(String name, Style style, int pointSize, int outline, int dpi,
+        boolean useWeakCache, String preload, int maxAtlasResolution, boolean fixedResolution) {
+        super(name, style, pointSize, dpi, useWeakCache, preload);
+        this.outline = outline;
+        this.maxAtlasResolution = maxAtlasResolution;
+        this.fixedResolution = fixedResolution;
+    }
+    
+    /**
      * 
      * @return The size of the outline around bitmap text.
      */
@@ -209,6 +234,14 @@ public class TrueTypeKeyBMP extends TrueTypeKey {
         return maxAtlasResolution;
     }
     
+    /**
+     * 
+     * @return If is using fixed atlas resolution
+     */
+    public boolean isFixedResolution() {
+        return fixedResolution;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (!(other instanceof TrueTypeKeyBMP) ||
@@ -222,7 +255,8 @@ public class TrueTypeKeyBMP extends TrueTypeKey {
     @Override
     public String toString() {
         return super.toString() + "_Outline:" + Integer.toString(outline)
-                + "_MaxRes:" + Integer.toString(maxAtlasResolution);
+                + "_MaxRes:" + Integer.toString(maxAtlasResolution)
+                + "_FixedRes:" + Boolean.toString(fixedResolution);
     }
     
     @Override
@@ -231,6 +265,7 @@ public class TrueTypeKeyBMP extends TrueTypeKey {
         OutputCapsule oc = ex.getCapsule(this);
         oc.write(outline, "outline", 0);
         oc.write(maxAtlasResolution, "maxres", 2048);
+        oc.write(fixedResolution, "fixedResolution", false);
     }
     
     @Override
@@ -239,5 +274,6 @@ public class TrueTypeKeyBMP extends TrueTypeKey {
         InputCapsule ic = im.getCapsule(this);
         outline = ic.readInt("outline", 0);
         maxAtlasResolution = ic.readInt("maxres", 2048);
+        fixedResolution = ic.readBoolean("fixedResolution", false);
     }
 }

@@ -55,8 +55,8 @@ public class TrueTypeAWT extends TrueTypeBMP<GlyphAWT> {
     private final AffineTransform transform;
     
     public TrueTypeAWT(AssetManager assetManager, Font font, Style style, int pointSize,
-            int outline, int dpi, int maxAtlasResolution, String preload) {
-        super(assetManager, style, pointSize, outline, dpi, maxAtlasResolution);
+            int outline, int dpi, int maxAtlasResolution, String preload, boolean fixedResolution) {
+        super(assetManager, style, pointSize, outline, dpi, maxAtlasResolution, fixedResolution);
         
         if (font != null) {
             this.font = font; 
@@ -206,9 +206,11 @@ public class TrueTypeAWT extends TrueTypeBMP<GlyphAWT> {
                     BufferUtils.destroyDirectBuffer(buf);
                 }
             }
+            atlas.setImage(new AWTLoader().load(tmpImg, false));
+        } else {
+            atlas = new Texture2D(new AWTLoader().load(tmpImg, false));
         }
-        
-        atlas = new Texture2D(new AWTLoader().load(tmpImg, false));
+
         g.dispose();
         
         atlasResized = false;
@@ -252,6 +254,7 @@ public class TrueTypeAWT extends TrueTypeBMP<GlyphAWT> {
             g.translate(-x, -y);
             
         }
+
         if (atlas != null) {
             atlas.getImage().dispose();
             if (!NativeObjectManager.UNSAFE) {
@@ -259,9 +262,11 @@ public class TrueTypeAWT extends TrueTypeBMP<GlyphAWT> {
                     BufferUtils.destroyDirectBuffer(buf);
                 }
             }
+            atlas.setImage(new AWTLoader().load(tmpImg, false));
+        } else {
+            atlas = new Texture2D(new AWTLoader().load(tmpImg, false));
         }
-        
-        atlas = new Texture2D(new AWTLoader().load(tmpImg, false));
+
         g.dispose();
         
         atlasResized = false;

@@ -41,7 +41,7 @@ public class TestAtlasResize extends SimpleApplication {
 
         assetManager.registerLoader(TrueTypeLoader.class, "ttf");
         
-        TrueTypeKey key = new TrueTypeKeyBMP(font, Style.Plain, fontSize, 0);
+        TrueTypeKey key = new TrueTypeKeyBMP(font, Style.Plain, fontSize, 0, 72, false, "", 256, true);
 
         TrueTypeFont font = (TrueTypeFont)assetManager.loadAsset(key);
 

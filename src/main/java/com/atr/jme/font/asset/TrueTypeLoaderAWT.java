@@ -70,6 +70,6 @@ public class TrueTypeLoaderAWT implements AssetLoader {
 
         return new TrueTypeAWT(assetInfo.getManager(), font,
             key.getStyle(), key.getPointSize(), key.getOutline(), key.getScreenDensity(),
-                key.getMaxAtlasRes(), key.getPreloadCharacters());
+                key.getMaxAtlasRes(), key.getPreloadCharacters(), key.isFixedResolution());
     }
 }

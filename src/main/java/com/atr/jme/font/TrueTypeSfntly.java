@@ -76,8 +76,8 @@ public class TrueTypeSfntly extends TrueTypeBMP<GlyphSfntly> {
     
     public TrueTypeSfntly(AssetManager assetManager, Font font, Style style,
             int pointSize, int outline, int screenDensity, int maxAtlasResolution,
-            String preload) {
-        super(assetManager, style, pointSize, outline, screenDensity, maxAtlasResolution);
+            String preload, boolean fixedResolution) {
+        super(assetManager, style, pointSize, outline, screenDensity, maxAtlasResolution, fixedResolution);
         
         this.font = font;
         
@@ -272,15 +272,6 @@ public class TrueTypeSfntly extends TrueTypeBMP<GlyphSfntly> {
     
     @Override
     protected void createAtlas() {
-        /*if (atlas != null) {
-            atlas.getImage().dispose();
-            if (!NativeObjectManager.UNSAFE) {
-                for (ByteBuffer buf : atlas.getImage().getData()) {
-                    BufferUtils.destroyDirectBuffer(buf);
-                }
-            }
-        }*/
-        
         Bitmap bitmap = Bitmap.createBitmap(atlasWidth, atlasHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
         canvas.drawRGB(0, 0, 0);
@@ -309,7 +300,18 @@ public class TrueTypeSfntly extends TrueTypeBMP<GlyphSfntly> {
             canvas.translate(-x, -y);
         }
         
-        atlas = new Texture2D(droidBitmapToImage(bitmap));
+        if (atlas != null) {
+            atlas.getImage().dispose();
+            if (!NativeObjectManager.UNSAFE) {
+                for (ByteBuffer buf : atlas.getImage().getData()) {
+                    BufferUtils.destroyDirectBuffer(buf);
+                }
+            }
+            atlas.setImage(droidBitmapToImage(bitmap));
+        } else {
+            atlas = new Texture2D(droidBitmapToImage(bitmap));
+        }
+
         bitmap.recycle();
         
         atlasResized = false;
@@ -317,15 +319,6 @@ public class TrueTypeSfntly extends TrueTypeBMP<GlyphSfntly> {
     
     @Override
     protected void createAtlasOutlined() {
-        /*if (atlas != null) {
-            atlas.getImage().dispose();
-            if (!NativeObjectManager.UNSAFE) {
-                for (ByteBuffer buf : atlas.getImage().getData()) {
-                    BufferUtils.destroyDirectBuffer(buf);
-                }
-            }
-        }*/
-        
         Bitmap bitmap = Bitmap.createBitmap(atlasWidth, atlasHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas =new Canvas(bitmap);
         canvas.drawRGB(0, 0, 0);
@@ -363,8 +356,19 @@ public class TrueTypeSfntly extends TrueTypeBMP<GlyphSfntly> {
             canvas.drawPath(contours, paint);
             canvas.translate(-x, -y);
         }
-        
-        atlas = new Texture2D(droidBitmapToImage(bitmap));
+
+        if (atlas != null) {
+            atlas.getImage().dispose();
+            if (!NativeObjectManager.UNSAFE) {
+                for (ByteBuffer buf : atlas.getImage().getData()) {
+                    BufferUtils.destroyDirectBuffer(buf);
+                }
+            }
+            atlas.setImage(droidBitmapToImage(bitmap));
+        } else {
+            atlas = new Texture2D(droidBitmapToImage(bitmap));
+        }
+
         bitmap.recycle();
         
         atlasResized = false;
