@@ -1,3 +1,5 @@
+#import "Common/ShaderLib/GLSLCompat.glsllib"
+
 #ifdef USEAA
     #ifdef GL_ES
         #extension GL_OES_standard_derivatives:enable

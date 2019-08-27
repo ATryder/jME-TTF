@@ -4,8 +4,8 @@ MaterialDef TrueTypeFont {
         Color Color (Color)
     }
     Technique {
-        VertexShader GLSL100: Common/MatDefs/TTF/TTF_Bitmap.vert
-        FragmentShader GLSL100: Common/MatDefs/TTF/TTF_Bitmap.frag
+        VertexShader GLSL100 GLSL150: Common/MatDefs/TTF/TTF_Bitmap.vert
+        FragmentShader GLSL100 GLSL150: Common/MatDefs/TTF/TTF_Bitmap.frag
         
         WorldParameters {
             WorldViewProjectionMatrix

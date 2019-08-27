@@ -1,3 +1,5 @@
+#import "Common/ShaderLib/GLSLCompat.glsllib"
+
 #ifdef GL_ES
     precision mediump float;
 #endif
