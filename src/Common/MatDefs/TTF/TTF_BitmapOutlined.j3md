@@ -5,8 +5,8 @@ MaterialDef TrueTypeOutlined {
         Color Outline (Color)
     }
     Technique {
-        VertexShader GLSL100: Common/MatDefs/TTF/TTF_Bitmap.vert
-        FragmentShader GLSL100: Common/MatDefs/TTF/TTF_BitmapOutlined.frag
+        VertexShader GLSL100 GLSL150: Common/MatDefs/TTF/TTF_Bitmap.vert
+        FragmentShader GLSL100 GLSL150: Common/MatDefs/TTF/TTF_BitmapOutlined.frag
         
         WorldParameters {
             WorldViewProjectionMatrix
