@@ -17,7 +17,7 @@ plugins {
 version='2.1.3'
 group='com.atr'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.7
 compileJava {
     options.encoding = 'UTF-8'
     options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
@@ -36,7 +36,12 @@ repositories {
 
 dependencies {
     api 'org.jmonkeyengine:jme3-core:[3.1,)'
-    api 'org.jmonkeyengine:jme3-desktop:[3.1,)'
     api 'com.jaredrummler:sfntly:1.+'
-    compileOnly group: 'com.google.android', name: 'android', version: '4.1.1.4'
+
+    // provided when running on Desktop
+    compileOnly 'org.jmonkeyengine:jme3-desktop:[3.1,)'
+
+    // provided when running on Android
+    compileOnly 'org.jmonkeyengine:jme3-android:[3.1,)'
+    compileOnly 'com.google.android:android:[4.1,)'
 }
