@@ -57,6 +57,7 @@ public class TrueTypeBMPContainer extends TrueTypeContainer {
             updateMesh();
         }
         
+        @SuppressWarnings("rawtypes")
         public void updateMesh() {
             Glyph[][] lines = stringContainer.getLines();
             TrueTypeBMP ttb = (TrueTypeBMP)stringContainer.getFont();

@@ -32,6 +32,8 @@ import java.util.logging.Logger;
  * <a href="http://1337atr.weebly.com">http://1337atr.weebly.com</a>
  */
 public class TrueTypeLoaderAWT implements AssetLoader {
+
+    @SuppressWarnings("rawtypes")
     @Override
     public TrueTypeBMP load(AssetInfo assetInfo) throws IOException {
         TrueTypeKeyBMP key = (TrueTypeKeyBMP)assetInfo.getKey();

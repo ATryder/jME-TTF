@@ -16,7 +16,6 @@ package com.atr.jme.font.asset;
 
 import com.atr.jme.font.util.Style;
 import com.jme3.asset.AssetKey;
-import static com.jme3.asset.AssetKey.reducePath;
 import com.jme3.asset.cache.AssetCache;
 import com.jme3.asset.cache.SimpleAssetCache;
 import com.jme3.asset.cache.WeakRefAssetCache;
@@ -33,6 +32,7 @@ import java.io.IOException;
  * @author Adam T. Ryder
  * <a href="http://1337atr.weebly.com">http://1337atr.weebly.com</a>
  */
+@SuppressWarnings("rawtypes")
 public abstract class TrueTypeKey extends AssetKey {
     private Style style;
     private int pointSize;
@@ -145,6 +145,7 @@ public abstract class TrueTypeKey extends AssetKey {
         oc.write(preload, "preload", "");
     }
     
+    @SuppressWarnings("unchecked")
     @Override
     public void read(JmeImporter im) throws IOException {
         InputCapsule ic = im.getCapsule(this);

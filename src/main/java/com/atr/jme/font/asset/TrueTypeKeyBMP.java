@@ -217,7 +217,11 @@ public class TrueTypeKeyBMP extends TrueTypeKey {
         this.maxAtlasResolution = maxAtlasResolution;
         this.fixedResolution = fixedResolution;
     }
-    
+
+    public void setOutline(int outline) {
+        this.outline = outline;
+    }
+
     /**
      * 
      * @return The size of the outline around bitmap text.
@@ -225,13 +229,21 @@ public class TrueTypeKeyBMP extends TrueTypeKey {
     public int getOutline() {
         return outline;
     }
-    
+
+    public void setMaxAtlasResolution(int maxAtlasResolution) {
+        this.maxAtlasResolution = maxAtlasResolution;
+    }
+
     /**
      * 
      * @return The maximum resolution of the texture atlas.
      */
     public int getMaxAtlasRes() {
         return maxAtlasResolution;
+    }
+    
+    public void setFixedResolution(boolean fixedResolution) {
+        this.fixedResolution = fixedResolution;
     }
     
     /**

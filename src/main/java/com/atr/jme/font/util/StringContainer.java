@@ -16,7 +16,6 @@ package com.atr.jme.font.util;
 
 import com.atr.jme.font.TrueTypeFont;
 import com.atr.jme.font.glyph.Glyph;
-import com.atr.jme.font.glyph.GlyphBMP;
 import com.jme3.font.Rectangle;
 import com.jme3.math.Vector2f;
 import java.util.ArrayList;
@@ -66,21 +65,35 @@ public class StringContainer {
     }
     
     /**
-     * <code>WrapMode.NoWrap</code> will
-     * display the text as is. <code>WrapMode.Char</code> will wrap each
-     * line to the next line when said line is wider than the <code>textBox</code>
-     * width. <code>WrapMode.Word</code> performs the same action as
-     * <code>WrapMode.Char</code> except that the algorithm attempts to
-     * wrap the line between words. <code>WrapMode.Clip</code> will not
-     * wrap the text at all, but instead cut off the first line where it
-     * is wider than the <code>textBox</code> width and add the <code>ellipsis</code>.
-     * <code>WrapMode.CharClip</code> performs the same action as
-     * <code>WrapMode.Char</code> except that the text will be cut off
-     * and the <code>ellipsis</code> added if and when the text lines
+     * <ul>
+     * <li>
+     * <code>WrapMode.NoWrap</code> will display the text as is.
+     * </li>
+     * <li>
+     * <code>WrapMode.Char</code> will wrap each line to the next line 
+     * when said line is wider than the <code>textBox</code> width.
+     * </li>
+     * <li>
+     * <code>WrapMode.Word</code> performs the same action as 
+     * <code>WrapMode.Char</code>  except that the algorithm attempts to 
+     * wrap the line between words.
+     * </li>
+     * <li>
+     * <code>WrapMode.Clip</code> will not wrap the text at all, but 
+     * instead cut off the first line where it is wider than the 
+     * <code>textBox</code> width and add the <code>ellipsis</code>.
+     * </li>
+     * <li>
+     * <code>WrapMode.CharClip</code> performs the same action as 
+     * <code>WrapMode.Char</code> except that the text will be cut off 
+     * and the <code>ellipsis</code> added if and when the text lines 
      * grow larger than the <code>textBox</code>'s height value.
+     * </li>
+     * <li>
      * <code>WrapMode.WordClip</code> performs the same action as
-     * <code>WrapMode.CharClip</code> except that the algorithm attempts
-     * to break the lines between words.
+     * <code>WrapMode.CharClip</code> except that the algorithm attempts 
+     * to break the lines between words.</li>
+     * <ul>
      */
     public enum WrapMode {
         NoWrap,

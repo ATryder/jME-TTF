@@ -206,6 +206,7 @@ public abstract class TrueTypeBMP<T extends GlyphBMP> extends TrueTypeFont<T, Tr
         return ttc;
     }
     
+    @SuppressWarnings("unchecked")
     @Override
     public T[] getGlyphs(StringBuilder text) {
         T[] glyphs = (T[])new GlyphBMP[text.length()];
@@ -235,6 +236,7 @@ public abstract class TrueTypeBMP<T extends GlyphBMP> extends TrueTypeFont<T, Tr
         return glyphs;
     }
     
+    @SuppressWarnings("unchecked")
     @Override
     public T[][] getGlyphMatrix(String text) {
         String[] strings = text.split("\n");

@@ -23,6 +23,7 @@ import com.atr.jme.font.TrueTypeBMP;
  * <a href="http://1337atr.weebly.com">http://1337atr.weebly.com</a>
  */
 public abstract class GlyphBMP extends Glyph {
+    @SuppressWarnings("rawtypes")
     public final TrueTypeBMP ttb;
     
     public final int x;
@@ -33,6 +34,7 @@ public abstract class GlyphBMP extends Glyph {
     protected int hMod;
     protected int xMod;
     
+    @SuppressWarnings("rawtypes")
     public GlyphBMP(TrueTypeBMP ttb,
             int codePoint, int x, int y, int atlasWidth, int atlasHeight) {
         super(codePoint);

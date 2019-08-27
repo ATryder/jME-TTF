@@ -260,6 +260,7 @@ public class TrueTypeMesh extends TrueTypeFont<GlyphMesh, TrueTypeMeshText> {
         return ttmc;
     }
     
+    @SuppressWarnings("unchecked")
     @Override
     public GlyphMesh[] getGlyphs(StringBuilder text) {
         GlyphMesh[] glyphs = new GlyphMesh[text.length()];

@@ -28,6 +28,7 @@ import com.jme3.asset.AssetManager;
  * <a href="http://1337atr.weebly.com">http://1337atr.weebly.com</a>
  */
 public interface AtlasListener {
+    @SuppressWarnings("rawtypes")
     public void mod(AssetManager assetManager, int oldWidth,
             int oldHeight, int newWidth, int newHeight, TrueTypeBMP font);
 }

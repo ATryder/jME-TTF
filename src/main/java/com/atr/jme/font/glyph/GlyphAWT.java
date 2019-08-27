@@ -28,6 +28,7 @@ import java.awt.font.GlyphVector;
 public class GlyphAWT extends GlyphBMP {
     private final Shape shape;
     
+    @SuppressWarnings("rawtypes")
     public GlyphAWT(TrueTypeBMP ttb, int x, int y, int codePoint, GlyphVector gv) {
         super(ttb, codePoint, x, y,
                 (int)Math.ceil(gv.getVisualBounds().getWidth()) + ttb.padding,

@@ -33,6 +33,8 @@ import java.io.IOException;
  * <a href="http://1337atr.weebly.com">http://1337atr.weebly.com</a>
  */
 public class TrueTypeLoader implements AssetLoader {
+
+    @SuppressWarnings("rawtypes")
     @Override
     public TrueTypeFont load(AssetInfo assetInfo) throws IOException {
         if (assetInfo.getKey() instanceof TrueTypeKeyMesh)
