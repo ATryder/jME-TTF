@@ -1,7 +1,3 @@
-/**
- * Huatu.com Inc.
- * Copyright (c) 2014-2019 All Rights Reserved.
- */
 package com.atr.jme.font.example;
 
 import com.atr.jme.font.TrueTypeBMP;
@@ -21,19 +17,19 @@ import com.jme3.scene.shape.Quad;
 import com.jme3.texture.Texture2D;
 
 /**
- * @title TestExpendAtlas
+ * @title TestAtlasResize
  * @author yanmaoyuan
  * @date 2019-08-27
  * @version 1.0
  */
-public class TestExpendAtlas extends SimpleApplication {
+public class TestAtlasResize extends SimpleApplication {
 
     private String font = "fonts/ubuntu-font-family-0.83/Ubuntu-M.ttf";
 
     private int fontSize = 18;
 
     public static void main(String[] args) {
-        TestExpendAtlas app = new TestExpendAtlas();
+        TestAtlasResize app = new TestAtlasResize();
         app.start();
     }
 
@@ -58,7 +54,7 @@ public class TestExpendAtlas extends SimpleApplication {
         displayAtlas(font, -20, 0);
 
         // test getText
-        TrueTypeNode text = font.getText("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", 2, ColorRGBA.White);
+        TrueTypeNode text = font.getText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2, ColorRGBA.White);
         text.move(0, font.getActualLineHeight() * 2, 0);// move up
         rootNode.attachChild(text);
 
