@@ -23,6 +23,8 @@ compileJava {
     options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
 }
 
+ext.jme3Version='[3.1,)'
+
 repositories {
 	mavenLocal()
 
@@ -35,13 +37,16 @@ repositories {
 }
 
 dependencies {
-    api 'org.jmonkeyengine:jme3-core:[3.1,)'
+    api "org.jmonkeyengine:jme3-core:${jme3Version}"
     api 'com.jaredrummler:sfntly:1.+'
 
     // provided when running on Desktop
-    compileOnly 'org.jmonkeyengine:jme3-desktop:[3.1,)'
+    compileOnly "org.jmonkeyengine:jme3-desktop:${jme3Version}"
 
     // provided when running on Android
-    compileOnly 'org.jmonkeyengine:jme3-android:[3.1,)'
+    compileOnly "org.jmonkeyengine:jme3-android:${jme3Version}"
     compileOnly 'com.google.android:android:[4.1,)'
+
+    // test runtime
+    testRuntimeOnly "org.jmonkeyengine:jme3-lwjgl:${jme3Version}"
 }
