@@ -34,7 +34,7 @@ public class TestTrueTypeBMP extends SimpleApplication {
 
         assetManager.registerLoader(TrueTypeLoader.class, "ttf");
 
-        TrueTypeKey key = new TrueTypeKeyBMP(Constants.FONT_TAHOMA, Style.Plain, 48);
+        TrueTypeKey key = new TrueTypeKeyBMP(Constants.FONT, Style.Plain, 48);
         //TrueTypeKey key = new TrueTypeKeyBMP(FONT, Style.Plain, 48, 1, CONTENT, 128);
 
         TrueTypeFont font = (TrueTypeFont)assetManager.loadAsset(key);

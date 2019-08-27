@@ -34,7 +34,7 @@ public class TestTrueTypeMesh extends SimpleApplication {
 
         assetManager.registerLoader(TrueTypeLoader.class, "ttf");
 
-        TrueTypeKey key = new TrueTypeKeyMesh(Constants.FONT_TAHOMA, Style.Plain, 48, 72, true);
+        TrueTypeKey key = new TrueTypeKeyMesh(Constants.FONT, Style.Plain, 48, 72, true);
 
         TrueTypeFont font = (TrueTypeFont)assetManager.loadAsset(key);
 
