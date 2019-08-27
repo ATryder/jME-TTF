@@ -45,7 +45,7 @@ public class TestAtlasResize extends SimpleApplication {
 
         TrueTypeFont font = (TrueTypeFont)assetManager.loadAsset(key);
 
-        // test getFormattedText
+        // Use a short String first.
         StringContainer sc = new StringContainer(font, "ABC", 2);
         TrueTypeContainer ttc = font.getFormattedText(sc, ColorRGBA.White);
         ttc.setLocalTranslation(0, font.getActualLineHeight(), 0);
@@ -53,9 +53,9 @@ public class TestAtlasResize extends SimpleApplication {
 
         displayAtlas(font, -20, 0);
 
-        // test getText
+        // Use a longer String, force atlas resize.
         TrueTypeNode text = font.getText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2, ColorRGBA.White);
-        text.move(0, font.getActualLineHeight() * 2, 0);// move up
+        text.move(0, font.getActualLineHeight() * 2, 0);
         rootNode.attachChild(text);
 
         displayAtlas(font, -20, 21);
