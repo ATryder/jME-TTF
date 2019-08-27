@@ -10,6 +10,9 @@ import com.atr.jme.font.shape.TrueTypeNode;
 import com.atr.jme.font.util.StringContainer;
 import com.atr.jme.font.util.Style;
 import com.jme3.app.SimpleApplication;
+import com.jme3.input.KeyInput;
+import com.jme3.input.controls.ActionListener;
+import com.jme3.input.controls.KeyTrigger;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Geometry;
@@ -43,7 +46,7 @@ public class TestAtlasResize extends SimpleApplication {
         
         TrueTypeKey key = new TrueTypeKeyBMP(font, Style.Plain, fontSize, 0, 72, false, "", 256, true);
 
-        TrueTypeFont font = (TrueTypeFont)assetManager.loadAsset(key);
+        final TrueTypeFont font = (TrueTypeFont)assetManager.loadAsset(key);
 
         // Use a short String first.
         StringContainer sc = new StringContainer(font, "ABC", 2);
@@ -53,12 +56,23 @@ public class TestAtlasResize extends SimpleApplication {
 
         displayAtlas(font, -20, 0);
 
-        // Use a longer String, force atlas resize.
-        TrueTypeNode text = font.getText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2, ColorRGBA.White);
-        text.move(0, font.getActualLineHeight() * 2, 0);
-        rootNode.attachChild(text);
+        inputManager.addMapping("ADD", new KeyTrigger(KeyInput.KEY_SPACE));
+        inputManager.addListener(new ActionListener() {
+            @Override
+            public void onAction(String name, boolean isPressed, float tpf) {
+                // Use a longer String, force atlas resize.
+                TrueTypeNode text = font.getText("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 2, ColorRGBA.White);
+                text.move(0, font.getActualLineHeight() * 2, 0);
+                rootNode.attachChild(text);
+                displayAtlas(font, -20, 21);
 
-        displayAtlas(font, -20, 21);
+                // Use this listener only once
+                inputManager.deleteMapping("ADD");
+                inputManager.removeListener(this);
+            }
+        }, "ADD");
+        
+
     }
 
     @SuppressWarnings("rawtypes")
