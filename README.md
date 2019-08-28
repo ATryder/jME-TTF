@@ -31,4 +31,4 @@ src="https://dl.dropboxusercontent.com/s/fydn0y11xxckxp2/1693b179e6b26b076e9748f
 
 jME-TTF depends upon Google's Sfntly library available at https://github.com/rillig/sfntly
 
-You can find more about jME-TTF including usage documentation at http://1337atr.weebly.com/jmettf.html
+You can find more about jME-TTF including usage documentation at http://1337atr.weebly.com/jttf.html
