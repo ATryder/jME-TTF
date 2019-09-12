@@ -93,7 +93,7 @@ public class StringContainer {
      * <code>WrapMode.WordClip</code> performs the same action as
      * <code>WrapMode.CharClip</code> except that the algorithm attempts 
      * to break the lines between words.</li>
-     * <ul>
+     * </ul>
      */
     public enum WrapMode {
         NoWrap,
