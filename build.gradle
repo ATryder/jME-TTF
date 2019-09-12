@@ -14,10 +14,11 @@ plugins {
 	id 'maven'
 }
 
-version='2.2.0'
+version='2.2.1'
 group='com.atr'
 
 sourceCompatibility = 1.7
+targetCompatibility = 1.7
 compileJava {
     options.encoding = 'UTF-8'
     options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
