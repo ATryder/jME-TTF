@@ -8,6 +8,11 @@
   <inceptionYear>2016</inceptionYear>
   <licenses>
     <license>
+      <name>Free Public License 1.0.0</name>
+      <url>http://opensource.org/licenses/FPL-1.0.0</url>
+      <distribution>repo</distribution>
+    </license>
+    <license>
       <name>BSD New</name>
       <url>http://opensource.org/licenses/BSD-3-Clause</url>
       <distribution>repo</distribution>
@@ -27,7 +32,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <artifactId>android</artifactId>
+      <groupId>org.jmonkeyengine</groupId>
+      <artifactId>jme3-desktop</artifactId>
+      <version>[3.1,)</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
