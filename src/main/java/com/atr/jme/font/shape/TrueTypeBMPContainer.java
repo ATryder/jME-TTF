@@ -88,8 +88,11 @@ public class TrueTypeBMPContainer extends TrueTypeContainer {
             short currentIndex = 0;
             int lineNum = 0;
             for (Glyph[] line : lines) {
-                if (line.length == 0)
+                if (line.length == 0) {
+                    currentLineHeight += stringContainer.getFont().getActualLineHeight();
+                    lineNum++;
                     continue;
+                }
 
                 int currentX = 0;
                 Vector2f lineY = stringContainer.getLineHeights()[lineNum];
