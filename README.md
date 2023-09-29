@@ -1,5 +1,6 @@
 jME-TTF
 ==================
+ADVISORY: jME-TTF is no longer hosted on GitHub. For current version and documentation see my website: https://www.inventati.org/1337gallery/scripts/jme-ttf/jttf.html
 
 jME-TTF is a True Type Font(.ttf) rendering system for jMonkeyEngine3.1 and newer. With this library you can render text styles loaded directly from a true type font file at run-time. Characters from the ttf file are written to a dynamically sized texture atlas and then rendered on screen using a series of quads that display each character from the atlas. When requesting a text string to display jME-TTF looks through the string to see if any characters are missing from the atlas and if so adds them, expanding the size of the atlas texture as necessary.
 
@@ -31,4 +32,4 @@ src="https://dl.dropboxusercontent.com/s/fydn0y11xxckxp2/1693b179e6b26b076e9748f
 
 jME-TTF depends upon Google's Sfntly library available at https://github.com/rillig/sfntly
 
-You can find more about jME-TTF including usage documentation at http://1337atr.weebly.com/jttf.html
+You can find more about jME-TTF including usage documentation at https://www.inventati.org/1337gallery/scripts/jme-ttf/jttf.html
